@@ -25,11 +25,14 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+	"time"
 
 	"github.com/google/subcommands"
 	"github.com/k0kubun/pp"
 	c "github.com/sadayuki-matsuno/vuls-config/config"
 	"github.com/sadayuki-matsuno/vuls-config/util"
+	"github.com/sadayuki-matsuno/vuls-models/models"
+	"github.com/sadayuki-matsuno/vuls-report/report"
 	"github.com/sadayuki-matsuno/vuls-scan/scan"
 )
 
@@ -218,11 +221,42 @@ func (p *ScanCmd) Execute(_ context.Context, f *flag.FlagSet, _ ...interface{}) 
 	util.Log.Info("Detecting IPS identifiers... ")
 	scan.DetectIPSs(p.timeoutSec)
 
+	scannedAt := time.Now()
 	util.Log.Info("Scanning vulnerabilities... ")
-	if err := scan.Scan(p.scanTimeoutSec); err != nil {
+	var results models.ScanResults
+	if results, err = scan.Scan(scannedAt, p.scanTimeoutSec); err != nil {
 		util.Log.Errorf("Failed to scan. err: %+v", err)
 		return subcommands.ExitFailure
 	}
+
+	jsonDir, err := scan.EnsureResultDir(scannedAt)
+	if err != nil {
+		util.Log.Errorf("Failed to ensure result dir: %s", err)
+		return subcommands.ExitFailure
+	}
+	c.Conf.FormatJSON = true
+	ws := []report.ResultWriter{
+		report.LocalFileWriter{CurrentDir: jsonDir},
+	}
+	for _, w := range ws {
+		if err := w.Write(results...); err != nil {
+			util.Log.Errorf("Failed to write summary report: %s", err)
+			return subcommands.ExitFailure
+		}
+	}
+	report.StdoutWriter{}.WriteScanSummary(results...)
+
+	errServerNames := []string{}
+	for _, r := range results {
+		if 0 < len(r.Errors) {
+			errServerNames = append(errServerNames, r.ServerName)
+		}
+	}
+	if 0 < len(errServerNames) {
+		util.Log.Errorf("An error occurred on: %s", errServerNames)
+		return subcommands.ExitFailure
+	}
+
 	fmt.Printf("\n\n\n")
 	fmt.Println("To view the detail, vuls tui is useful.")
 	fmt.Println("To send a report, run vuls report -h.")
