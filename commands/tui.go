@@ -23,15 +23,15 @@ import (
 	"os"
 	"path/filepath"
 
-	c "github.com/future-architect/vuls/config"
-	"github.com/future-architect/vuls/exploit"
-	"github.com/future-architect/vuls/gost"
-	"github.com/future-architect/vuls/models"
-	"github.com/future-architect/vuls/oval"
-	"github.com/future-architect/vuls/report"
-	"github.com/future-architect/vuls/util"
+	"github.com/sadayuki-matsuno/vuls-report/exploit"
 	"github.com/google/subcommands"
 	cvelog "github.com/kotakanbe/go-cve-dictionary/log"
+	c "github.com/sadayuki-matsuno/vuls-config/config"
+	"github.com/sadayuki-matsuno/vuls-config/util"
+	"github.com/sadayuki-matsuno/vuls-models/models"
+	"github.com/sadayuki-matsuno/vuls-report/gost"
+	"github.com/sadayuki-matsuno/vuls-report/oval"
+	"github.com/sadayuki-matsuno/vuls-report/report"
 )
 
 // TuiCmd is Subcommand of host discovery mode

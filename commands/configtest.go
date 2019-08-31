@@ -27,9 +27,9 @@ import (
 
 	"github.com/google/subcommands"
 
-	c "github.com/future-architect/vuls/config"
-	"github.com/future-architect/vuls/scan"
-	"github.com/future-architect/vuls/util"
+	c "github.com/sadayuki-matsuno/vuls-config/config"
+	"github.com/sadayuki-matsuno/vuls-config/util"
+	"github.com/sadayuki-matsuno/vuls-scan/scan"
 )
 
 // ConfigtestCmd is Subcommand

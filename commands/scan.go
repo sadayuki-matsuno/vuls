@@ -26,11 +26,11 @@ import (
 	"path/filepath"
 	"strings"
 
-	c "github.com/future-architect/vuls/config"
-	"github.com/future-architect/vuls/scan"
-	"github.com/future-architect/vuls/util"
 	"github.com/google/subcommands"
 	"github.com/k0kubun/pp"
+	c "github.com/sadayuki-matsuno/vuls-config/config"
+	"github.com/sadayuki-matsuno/vuls-config/util"
+	"github.com/sadayuki-matsuno/vuls-scan/scan"
 )
 
 // ScanCmd is Subcommand of host discovery mode

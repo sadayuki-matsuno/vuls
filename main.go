@@ -24,9 +24,9 @@ import (
 
 	"context"
 
-	"github.com/future-architect/vuls/commands"
-	"github.com/future-architect/vuls/config"
 	"github.com/google/subcommands"
+	"github.com/sadayuki-matsuno/vuls-config/config"
+	"github.com/sadayuki-matsuno/vuls/commands"
 )
 
 func main() {

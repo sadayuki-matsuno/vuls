@@ -26,9 +26,9 @@ import (
 	"path/filepath"
 	"strings"
 
-	c "github.com/future-architect/vuls/config"
-	"github.com/future-architect/vuls/report"
 	"github.com/google/subcommands"
+	c "github.com/sadayuki-matsuno/vuls-config/config"
+	"github.com/sadayuki-matsuno/vuls-report/report"
 )
 
 // HistoryCmd is Subcommand of list scanned results

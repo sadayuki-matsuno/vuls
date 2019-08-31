@@ -26,11 +26,11 @@ import (
 	"net/http"
 	"time"
 
-	c "github.com/future-architect/vuls/config"
-	"github.com/future-architect/vuls/models"
-	"github.com/future-architect/vuls/report"
-	"github.com/future-architect/vuls/scan"
-	"github.com/future-architect/vuls/util"
+	c "github.com/sadayuki-matsuno/vuls-config/config"
+	"github.com/sadayuki-matsuno/vuls-config/util"
+	"github.com/sadayuki-matsuno/vuls-models/models"
+	"github.com/sadayuki-matsuno/vuls-report/report"
+	"github.com/sadayuki-matsuno/vuls-scan/scan"
 )
 
 // VulsHandler is used for vuls server mode

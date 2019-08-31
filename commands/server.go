@@ -25,17 +25,17 @@ import (
 	"os"
 	"path/filepath"
 
-	// "github.com/future-architect/vuls/Server"
+	// "github.com/sadayuki-matsuno/vuls/Server"
 
-	c "github.com/future-architect/vuls/config"
-	"github.com/future-architect/vuls/exploit"
-	"github.com/future-architect/vuls/gost"
-	"github.com/future-architect/vuls/oval"
-	"github.com/future-architect/vuls/report"
-	"github.com/future-architect/vuls/server"
-	"github.com/future-architect/vuls/util"
 	"github.com/google/subcommands"
 	cvelog "github.com/kotakanbe/go-cve-dictionary/log"
+	c "github.com/sadayuki-matsuno/vuls-config/config"
+	"github.com/sadayuki-matsuno/vuls-config/util"
+	"github.com/sadayuki-matsuno/vuls-report/exploit"
+	"github.com/sadayuki-matsuno/vuls-report/gost"
+	"github.com/sadayuki-matsuno/vuls-report/oval"
+	"github.com/sadayuki-matsuno/vuls-report/report"
+	"github.com/sadayuki-matsuno/vuls/server"
 )
 
 // ServerCmd is subcommand for server
