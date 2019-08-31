@@ -5,7 +5,6 @@ go 1.12
 require (
 	github.com/elazarl/goproxy v0.0.0-20190711103511-473e67f1d7d2 // indirect
 	github.com/elazarl/goproxy/ext v0.0.0-20190711103511-473e67f1d7d2 // indirect
-	github.com/future-architect/vuls v0.8.5
 	github.com/google/subcommands v1.0.1
 	github.com/howeyc/gopass v0.0.0-20170109162249-bf9dde6d0d2c
 	github.com/k0kubun/pp v3.0.1+incompatible
